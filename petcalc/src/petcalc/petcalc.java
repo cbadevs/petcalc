@@ -15,9 +15,7 @@ public class petcalc {
 	int x;
 	int y;
 	int z;
-
 	Random rndgen = new Random();
-	
 	
 //	private int randInt(int min, int max) {
 //
@@ -39,6 +37,5 @@ public class petcalc {
 	private void gen_y (int bound) {
 		this.y=rndgen.nextInt(bound);
 	}
-	
 
 }
