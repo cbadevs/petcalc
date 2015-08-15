@@ -51,7 +51,7 @@ public class petcalc {
 	/**
 	 * 
 	*/
-	public int[] game (int level, int operador){
+	public int[] game (int level, int operator){
 	
 		//add operator control, bust be 0-3
 		//add level control, for now must be 1 or 2
@@ -63,24 +63,32 @@ public class petcalc {
 					break;
 		}
 		
-		switch (operador)	{
+		switch (operator)	{
 			case SUMA:	z=x+y;
 						break;
-			case RESTA:	z=x-y;
+			case RESTA:	if (y>x) {
+							int helper;
+							helper=x;
+							x=y;
+							y=helper;
+						}
+						z=x-y;
 						break;
 			case MULTI:	z=x*y;
 						break;
-			case DIVI:	z=x%y;
+			case DIVI:	while (y==0) {
+							switch (level) {
+								case 1:	genxy(10);
+										break;
+								case 2:	genxy(100);
+										break;
+							}
+						}
+						z=x%y;
 						break;
 		}
 		
-		int[] data;
-		data = new int[4];
-		
-		data[0]=this.x;
-		data[1]=this.y;
-		data[2]=this.z;
-		data[3]=this.shadow;
+		int[] data = { x, y, x, shadow };
 		return data;
 		}
 
