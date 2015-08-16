@@ -12,18 +12,108 @@ import java.util.Random;
  * first working class
  */
 public class petcalc {
+	
+	private static final int ADD = 0;
+	private static final int SUB = 1;
+	private static final int MUL = 2;
+	private static final int DIV = 3;
+	
+	private static final int EASY = 0;
+	private static final int NORMAL = 1;
+	private static final int HARD = 2;
+	
+	Random rndgen = new Random();
 
 	private int x;
 	private int y;
 	private int z;
 	private int shadow;
+	private int level;
+	private int operation;
+	private int timer; //will use this one to count total challenge time
 	
-	private static final int SUMA = 0;
-	private static final int RESTA = 1;
-	private static final int MULTI = 2;
-	private static final int DIVI = 3;
+	public int getLevel() {
+		return level;
+	}
+
+
+	public void setLevel(int level) {
+		this.level = level;
+	}
+
+
+	public int getOperation() {
+		return operation;
+	}
+
+
+	public void setOperation(int operation) {
+		this.operation = operation;
+	}
 	
-	Random rndgen = new Random();
+	petcalc(){
+		setLevel(0);
+		setOperation(0);
+	}
+	
+	petcalc(int level, int operation){
+		setLevel(level);
+		setOperation(operation);
+	}
+	
+	/**
+	 * For now all numbers generated are only positive, need to fix that!!
+	 */
+	private void genxy()	{
+		switch(level)	{
+		case EASY: 		x=rndgen.nextInt(10);
+						y=rndgen.nextInt(10);
+						break;
+				
+		case NORMAL:	x=rndgen.nextInt(100);
+						y=rndgen.nextInt(10);
+						break;
+				
+		case HARD:		x=rndgen.nextInt(100);
+						y=rndgen.nextInt(100);
+						break;
+		}
+	}
+	
+	private void genz()	{
+		switch (operation)	{
+			case ADD:	z=x+y;
+						break;
+						
+			case SUB:	if (y>x) {
+							int helper;
+							helper=x;
+							x=y;
+							y=helper;
+							}
+						z=x-y;
+						break;
+						
+			case MUL:	z=x*y;
+						break;
+						
+			case DIV:	while (y==0) {
+							genxy();
+						}
+						z=x/y;
+						break;
+		}
+	}
+		
+	
+		
+		//** provide shadow and wait for answer? not an option, client will neeed challenge first
+		
+		//como hago para limitar los challenges a 10, le incumbe a esta clase o al cliente?
+		// si le incumbe al cliente entonces el cliente no es una pantalla gui, sino un objeto intermedio
+		
+		//or first of all get answer, shadow was already provided when started, (constructed)
+
 	
 //	private int randInt(int min, int max) {
 //
@@ -38,61 +128,15 @@ public class petcalc {
 //	    return randomNum;
 //	}
 	
-	private void genxy (int bound) {
-		this.x=rndgen.nextInt(bound);
-		this.y=rndgen.nextInt(bound);
-	}
 	
 	private void genshadow(){
 		this.shadow=rndgen.nextInt(3);
 		
 	}
 
-	/**
-	 * 
-	*/
-	public int[] game (int level, int operator){
 	
-		//add operator control, bust be 0-3
-		//add level control, for now must be 1 or 2
-		genshadow();
-		switch (level) {
-			case 1:	genxy(10);
-					break;
-			case 2:	genxy(100);
-					break;
-		}
-		
-		switch (operator)	{
-			case SUMA:	z=x+y;
-						break;
-			case RESTA:	if (y>x) {
-							int helper;
-							helper=x;
-							x=y;
-							y=helper;
-						}
-						z=x-y;
-						break;
-			case MULTI:	z=x*y;
-						break;
-			case DIVI:	while (y==0) {
-							switch (level) {
-								case 1:	genxy(10);
-										break;
-								case 2:	genxy(100);
-										break;
-							}
-						}
-						z=x%y;
-						break;
-		}
-		
-		int[] data = { x, y, x, shadow };
-		return data;
-		}
-
-	public static void main (String args[])
+	
+	/**public static void main (String args[])
 	{
 		petcalc object;
 		object = new petcalc();
@@ -109,6 +153,6 @@ public class petcalc {
 		System.out.print(array[3]);
 		System.out.print("**");
 	}
-	
+	*/
 }
 
