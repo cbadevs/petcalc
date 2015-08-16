@@ -15,7 +15,7 @@ import javax.swing.JTextField;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.event.ChangeListener;
 
-public class ver extends JFrame {
+public class marVer extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField valorX;
@@ -30,7 +30,7 @@ public class ver extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ver frame = new ver();
+					marVer frame = new marVer();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -42,7 +42,7 @@ public class ver extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ver() {
+	public marVer() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -119,8 +119,8 @@ public class ver extends JFrame {
 			boton1.setEnabled(false);
 		}*/
 		
-		Operaciones juego;
-		juego = new Operaciones();
+		marOperaciones juego;
+		juego = new marOperaciones();
 		juego.Iniciar(nivel.getSelectedIndex());
 		
 		System.out.println(nivel.getSelectedIndex());

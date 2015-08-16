@@ -9,7 +9,7 @@ import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-public class Formulario extends JFrame implements ActionListener, ChangeListener, ItemListener {
+public class marFormulario extends JFrame implements ActionListener, ChangeListener, ItemListener {
 	private JLabel label1, label2, operacion, resultado;
 	private JCheckBox check1;
 	private JTextField textfield1;
@@ -18,7 +18,7 @@ public class Formulario extends JFrame implements ActionListener, ChangeListener
 	private JRadioButton radio1,radio2,radio3;
     private ButtonGroup bg;
 
-	public Formulario() {
+	public marFormulario() {
 		setLayout(null);
 		
 		check1 = new JCheckBox("Apagado");
@@ -99,7 +99,7 @@ public class Formulario extends JFrame implements ActionListener, ChangeListener
 	}
 
 	public static void main(String[] ar) {
-		Formulario formulario1 = new Formulario();
+		marFormulario formulario1 = new marFormulario();
 		formulario1.setBounds(10, 10, 400, 300);
 		formulario1.setVisible(true);
 	}

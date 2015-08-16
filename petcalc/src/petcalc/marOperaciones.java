@@ -2,7 +2,7 @@ package petcalc;
 
 import java.util.Random;
 
-public class Operaciones {
+public class marOperaciones {
 	private int _x;
 	private int _y;
 	private int _z;

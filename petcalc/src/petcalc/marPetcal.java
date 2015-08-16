@@ -2,7 +2,7 @@ package petcalc;
 
 import java.util.Scanner;
 
-public class Petcal {
+public class marPetcal {
 
 	public static void main(String[] args) {
 		Scanner teclado = new Scanner(System.in);
@@ -16,8 +16,8 @@ public class Petcal {
 		operador = teclado.next();
 
 		System.out.print("La operaciones:");
-		Operaciones juego;
-		juego = new Operaciones();
+		marOperaciones juego;
+		juego = new marOperaciones();
 		juego.Iniciar(nivel);
 		juego.Suma();
 		switch (operador) {
